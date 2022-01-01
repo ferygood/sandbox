@@ -74,3 +74,30 @@ while count<3:
   pageURL="https://www.ptt.cc"+getData(pageURL)
   count+=1
 
+  
+  
+  
+# 5. AJAX/XHR 網站技術分析
+# 認出網站運作模式，找出真正能抓到資料的網址，以 medium.com 為例
+# 可用開發者工具看 XHR 分析
+import urllib.request as reqjsonimport J
+url = "https://medium.com/_/api/home-feed"
+request = req.Request(url, headers = {
+  "User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
+})
+with req.urlopen(request) as response:
+  data = response.read().decode("utf-8")
+# 解析 JSON 
+data = data.replace("])}while(1);</x>","")
+data = json.loads(data)
+# 取得資料中的文章標題
+posts = data["payload"]["references"]["Post"]
+for key in posts:
+  post = posts[key]
+  print(post["title"])
+
+
+
+
+
+
